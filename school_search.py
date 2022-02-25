@@ -37,7 +37,7 @@ def main_search(search_term, data):
   
   result = {}
   for row in data:
-    key = row[3] + " " + row[4] + " " + row[5]
+    key = row[3] + " " + row[4] + ", " + row[5]
     
     #initialize rank to 0
     result[key] = 0
@@ -45,15 +45,20 @@ def main_search(search_term, data):
     for term in split_search_term_to_array:
       if term in key:
         result[key] += 1
+      
+      # Extra ranking point for school found in state name
+      if term in row[4]:
+         result[key] +=1
   
   # Sort the result by rank to return top 3 results
   
-  final_result = sorted(result, key=result.get, reverse=True)[:3]
+  final_result = []
+  for k, v  in sorted(result.items(), key=lambda item: item[1], reverse=True)[:3]:
+    if v > 0:
+      final_result.append(k)
    
   return final_result
-    
-        
-search_schools('elementary school highland park')
+
   
   
   
