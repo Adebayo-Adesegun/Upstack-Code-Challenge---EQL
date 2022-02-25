@@ -51,7 +51,7 @@ class Search(object):
         
         # Extra ranking point for school found in state name
         if term in row[4]:
-          result[key] +=1
+          result[key] +=0.5
     
     # Sort the result by rank to return top 3 results
     
@@ -64,11 +64,11 @@ class Search(object):
 
   
 # Pre load Data
-# csv_reader_list = utility.load_csv_data('school_data.csv') 
-# search = Search(csv_reader_list)
+csv_reader_list = utility.load_csv_data('school_data.csv') 
+search = Search(csv_reader_list)
 
-# print(search.search_schools('KUSKOKWIM'))
-  
+print(search.search_schools('KUSKOKWIM'))
+
   
   
   

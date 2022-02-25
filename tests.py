@@ -20,6 +20,7 @@ class TestSchoolSearch(unittest.TestCase):
   def test_query_1(self):
 
       self.setUp()
+      self.assertIn('HIGHLAND PARK ELEMENTARY SCHOOL, AL', self.search.main_search('highland park elementary school'))
       self.assertTrue(len(self.search.main_search('elementary school highland park')) == 3)
 
   def test_query_2(self):
